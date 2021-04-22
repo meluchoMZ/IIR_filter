@@ -22,6 +22,5 @@ SC_MODULE(filter)
 			sensitive << clk.pos();
 		}
 	private:
-		// rexistros internos para gardar os valores w(i) anteriormente calculados
-		sc_int< 16 > w0, w1, w2, w3;
+		sc_int< 16 > w1, w2, w3;
 };

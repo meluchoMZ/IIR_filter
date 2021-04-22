@@ -8,7 +8,8 @@ Author: Miguel Blanco Godón
 
 void filter::execute(void)
 {
-	#pragma HLS pipeline II=2
+	//#pragma HLS pipeline II=2
+	sc_int<16> w0;
 	if (reset->read()) {
 		w0 = 0; w1 = 0; w2 = 0; w3 = 0;
 		valid_output->write(false);
