@@ -120,9 +120,9 @@ class top : public sc_module
 			prod->out(data);
 
 			fil->clk(clk);
-			fil->reset(reset);
-			fil->input(data);
-			fil->output(res);
+			fil->rst(reset);
+			fil->i(data);
+			fil->o(res);
 			fil->valid_output(val);
 			
 			cons->clk(clk);

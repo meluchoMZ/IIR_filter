@@ -9,9 +9,9 @@ Author: Miguel Blanco Godón
 SC_MODULE(filter)
 {
 	public:
-		sc_in< bool > clk, reset;
-		sc_in< sc_int< 16 > > input;
-		sc_out< sc_int< 16 > > output;
+		sc_in< bool > clk, rst;
+		sc_in< sc_int< 16 > > i;
+		sc_out< sc_int< 16 > > o;
 		sc_out< bool > valid_output;
 
 		void execute(void);
