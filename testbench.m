@@ -12,3 +12,8 @@ xint_16 = int16(10000*x);
 f = fopen('./source_0.dat', 'w');
 fprintf(f, '%d ', xint_16);
 fclose(f);
+
+% second version of the filter must use 32 floating point numbers
+f = fopen('./source_1.dat', 'w');
+fprintf(f, '%f ', x(1:100));
+fclose(f);

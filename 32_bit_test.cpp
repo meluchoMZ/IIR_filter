@@ -1,15 +1,22 @@
+/**
+  High level 32 bit floating point filter test
+  Hardware-Software codesign, Computer engineering
+Author: Miguel Blanco Godón
+*/
+
 #include <iostream>
 #include <errno.h>
 #include <string.h>
-#include "c16_bit_filter.h"
+#include <math.h>
+#include "32_bit_filter.h"
 
-#define INF "./source_0.dat"
-#define TESTF "./test_0.dat" 
+#define INF "./source_1.dat"
+#define TESTF "./test_1.dat" 
 
 int main(void)
 {
 	FILE *f_input, *f_test;
-	int input, output, computed_output;
+	float input, output, computed_output;
 
 	if ((f_input = fopen(INF, "r")) == NULL) {
 		std::cout << "ERROR: cannot open input file " << INF << ": " << strerror(errno) << std::endl;
@@ -21,18 +28,15 @@ int main(void)
 		return EXIT_FAILURE;
 	}
 
-
-	computed_output = filter((short) 0, true); // reset da igual a entrada
-	fscanf(f_test, "%d ", &output);
-	if (output != computed_output) {
-		std::cout << "Failure on reset: " << computed_output << " != " << output << std::endl;
-	}
-	while (fscanf(f_input, "%d ", &input) != EOF)
+	int i = 0;
+	while (fscanf(f_input, "%f ", &input) != EOF)
 	{
-		fscanf(f_test, "%d ", &output);
-		computed_output = filter((short)input, false);
+		fscanf(f_test, "%f ", &output);
+		computed_output = filter((float)input, false);
 		if (output != computed_output) {
-			std::cout << "Failure on test: " << computed_output << " != " << output << std::endl;
+			if (! ((isnan(output) && isnan(computed_output)))) {
+				std::cout << ": Failure on test: " << computed_output << " != " << output << std::endl;
+			}
 		}
 	}
 	std::cout << "END" << std::endl;

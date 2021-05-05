@@ -1,7 +1,7 @@
 /**
-  High level 16 bit point filter
+  High level 32 bit floating point filter
   Hardware-Software codesign, Computer engineering
 Author: Miguel Blanco Godón
 */
 
-short filter(short input, bool reset);
+float filter(float input, bool reset);
