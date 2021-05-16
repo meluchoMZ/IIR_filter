@@ -59,8 +59,8 @@ int main(void)
 	// test creation for 32 bit floating point
 	while (fscanf(f_input, "%f ", &fi) != EOF)
 	{
-		fw0 = fi + (1.475*fw1) - (0.5984*fw2) + (0.23*fw3);
-		fo = 0.027467*(fw0+fw1+fw2+fw3);
+		fw0 = fi + (1.475f*fw1) - (0.5984f*fw2) + (0.23f*fw3);
+		fo = 0.027467f*(fw0+fw1+fw2+fw3);
 		fw3 = fw2; fw2 = fw1; fw1 = fw0;
 		fprintf(f_output, "%.50f ", fo);
 	}
